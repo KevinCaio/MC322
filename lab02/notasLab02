@@ -1,0 +1,120 @@
+Desafio 1:
+	Parte 1:
+	
+int n, j;
+double s;
+
+n=5;
+j=1;
+s=200.00;
+
+for (int i = 0; i < n; i++){
+    if(i==0)
+        System.out.println("Parcela "+ (i+1) + " " + s);
+    else
+        System.out.println("Parcela "+ (i+1) + " " + s*(1+j/100));
+    s = s*(1+j/100);
+}	
+
+	Parte 2:
+	
+public class Emprestimo {
+    
+    static float proximaParcela(int j, float s) {
+        return s*(1+j/100);
+    }
+}
+
+float s;
+int j;
+int n;
+
+s=200;
+j=1;
+n=5;
+
+for(int i = 0;i < n; i++){
+    s = Emprestimo.proximaParcela(j, s);
+    System.out.println("Parcela "+ (i+1) + " " + s);
+}
+
+
+Desafio 2:
+
+import java.util.Random;
+
+Random rand = new Random();
+int aleatorio = rand.nextInt(9999);
+int resultado; 
+int i;
+
+String binario = "";
+
+System.out.println("Numero Sorteado: " + aleatorio);
+
+i = 0;
+resultado = aleatorio;
+while(resultado > 2){
+    binario += resultado%2;
+    resultado = resultado/2;
+}
+System.out.println("Numero sorteado em binario: " + binario);
+
+
+Desafio 3:
+
+public class Dna {
+    
+    static String transcricao(String dna){
+        String rna = "";
+        for(int i = 0; i < dna.length();i ++){
+            if(dna.charAt(i) == 'A')
+                rna += "T";
+            if(dna.charAt(i) == 'C')
+                rna += "G";
+            if(dna.charAt(i) == 'T')
+                rna += "A";
+            if(dna.charAt(i) == 'G')
+                rna += "C";
+        }
+        return rna;
+    }
+}
+
+-----segundo 
+String dna = "ATTACGCGCAAAC";
+String rna = "";
+
+rna = Dna.transcricao(dna);
+System.out.println(rna);
+
+
+Desafio 4:
+
+import java.util.Random;
+
+Random rand = new Random();
+int salario = rand.nextInt(15000);
+int salarios[] = new int[50];
+int salariosAcima[] = new int[50];
+
+int soma = 0;
+int contador = 0;
+float media;
+
+for(int i =0; i < 50;i++){
+    salarios[i] = rand.nextInt(15000); //rever
+    soma+= salarios[i];
+}
+
+media = soma / 50;
+
+for(int j =0; j < 50; j++){
+    if (salarios[j] > media){
+        salariosAcima[contador] = salarios[j];
+        contador += 1;
+    }
+}
+
+for(int k=0; k < contador; k++)
+    System.out.println(salariosAcima[k]);
