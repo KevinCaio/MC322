@@ -2,4 +2,4 @@
 
 ## Notebook 1 sobre Estruturas em Java
 
-[Notebook1](notebook/lab02-java-estruturas-ra247218.ipynb)
+[Notebook1](notebook/lab02-java-estruturas-ra247218 .ipynb)
