@@ -35,6 +35,12 @@ public class AppLombriga {
       }
       tk.stop();
       
+      //falta rever a questao da chamada dos metodos das classes
+      //a iteracao sobre os caracteres das strings
+      //o metodo pásso, pra identifcar qual funcao tem q chamar pra executar a acao
+      //---------------------
+      
+      
       //chamar um metodo da animacao que vai pegar o caractere e dps chamar um metodo da aquario pra executar a acao
       //primeiro apresenta a lombriga sem fazer nda(primeira cahamda)
       //executa uma acao e apresenta 
