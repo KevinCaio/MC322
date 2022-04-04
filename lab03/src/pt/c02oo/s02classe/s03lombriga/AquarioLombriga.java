@@ -12,51 +12,51 @@ public class AquarioLombriga {
 		direcao = -1;
 	}
 	
-	public void crescer(AquarioLombriga aquario) { //vai ter retorno?
-		if(direcao == -1 && aquario.posRabo < aquario.tamAquario) {
-			aquario.tamLombriga += 1;
-			aquario.posRabo += 1;
+	public void crescer() {
+		if(direcao == -1 && posRabo < tamAquario) {
+			tamLombriga += 1;
+			posRabo += 1;
 		}
-		if(direcao == 1 && aquario.posRabo > 1) {
-			aquario.tamLombriga += 1;
-			aquario.posRabo -= 1;
+		if(direcao == 1 && posRabo > 1) {
+			tamLombriga += 1;
+			posRabo -= 1;
 		}
 		
 	}
 	
-	public void mover(AquarioLombriga aquario) {
-		if((aquario.direcao == -1 && aquario.posCabeca == 1) || (aquario.direcao == 1 && aquario.posCabeca == aquario.tamAquario)) {
-			aquario.virar(); //parametros?
+	public void mover() {
+		if((direcao == -1 && posCabeca == 1) || (direcao == 1 && posCabeca == tamAquario)) {
+			virar(); 
 		}
 		else {
-			if(aquario.direcao == -1) {
-				aquario.posCabeca -= 1;
-				aquario.posRabo -= 1;
+			if(direcao == -1) {
+				posCabeca -= 1;
+				posRabo -= 1;
 			}
-			if(aquario.direcao == 1) {
-				aquario.posCabeca += 1;
-				aquario.posRabo += 1;
+			if(direcao == 1) {
+				posCabeca += 1;
+				posRabo += 1;
 			}
 		}
 	}
 	
-	public void virar(AquarioLombriga aquario) {
+	public void virar() {
 		int aux;
-		aux = aquario.posCabeca;
-		aquario.posCabeca = aquario.posRabo;
-		aquario.posRabo = aux;
-		aquario.direcao = aquario.direcao * (-1);
+		aux = posCabeca;
+		posCabeca = posRabo;
+		posRabo = aux;
+		direcao = direcao * (-1);
 	}
 	
-	public String apresenta(AquarioLombriga aquario) {
+	public String apresenta() {
 		String representacao = "";
 		
-		if(aquario.direcao == -1) {
-			for(int i = 0;i <= aquario.tamAquario;i++) {
-				if(i == aquario.posCabeca) {
+		if(direcao == -1) {
+			for(int i = 0;i <= tamAquario;i++) {
+				if(i == posCabeca) {
 					representacao += "0";
 				}
-				if(i > aquario.posCabeca && i <= aquario.posRabo) {
+				if(i > posCabeca && i <= posRabo) {
 					representacao += "@";
 				}
 				else {
@@ -64,12 +64,12 @@ public class AquarioLombriga {
 				}
 			}
 		}
-		if(aquario.direcao == 1) {
-			for(int i = 0;i <= aquario.tamAquario;i++) {
-				if(i == aquario.posCabeca) {
+		if(direcao == 1) {
+			for(int i = 0;i <= tamAquario;i++) {
+				if(i == posCabeca) {
 					representacao += "0";
 				}
-				if(i < aquario.posCabeca && i >= aquario.posRabo) {
+				if(i < posCabeca && i >= posRabo) {
 					representacao += "@";
 				}
 				else {

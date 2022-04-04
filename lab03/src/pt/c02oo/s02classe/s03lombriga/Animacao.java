@@ -5,24 +5,34 @@ public class Animacao {
 	 * Metodos:
 	 *passo
 	 * */
-	String movimentos;
+	char[] movimentos;
 	int tamanho;
 	int atual;
 	
 	public Animacao(String moves) {
-		this.movimentos = moves;
+		this.movimentos = moves.toCharArray();
 		this.tamanho = moves.length();
-		this.atual = 1;
+		this.atual = 0;
 	}
 	
 	public String apresenta(AquarioLombriga aquario) {
 		return aquario.apresenta();
 	}
 	
-	public String passo(String movimentos) {//pega a movimentacao q tem q fazer e chama o aquario pra fazer a movimentacao
-		//iterar sobre os elementos da string, manter um controle com o atual e o tamanho
+	public void passo(AquarioLombriga aquario) {
 		
-		return movimentos;  //mandar o objeto pra ca?
+		if(atual < tamanho) {
+			if(movimentos[atual] == 'C') {
+				aquario.crescer();
+			}
+			if(movimentos[atual] == 'M') {
+				aquario.mover();
+			}
+			if(movimentos[atual] == 'V') {
+				aquario.virar();
+			}
+			atual += 1;
+		}
 	}
 	
 }

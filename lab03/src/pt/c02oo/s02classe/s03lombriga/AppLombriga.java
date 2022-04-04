@@ -14,36 +14,30 @@ public class AppLombriga {
       
       for(int j=0;j < lombrigas.length;j++) {
     	  
-    	  int tamAquario = Integer.parseInt(lombrigas[j][1]) *10 + Integer.parseInt(lombrigas[j][2]); //rever essas posicoes
-          int tamLombriga = Integer.parseInt(lombrigas[3]) *10 + Integer.parseInt(lombrigas[4]); //eh uma matriz
-          int posCabeca = Integer.parseInt(lombrigas[5])*10 + Integer.parseInt(lombrigas[6]); 
+    	  char[] charLombrigas = lombrigas[j].toCharArray();
+    	  
+    	  int tamAquario = (charLombrigas[1] - '0') *10 + (charLombrigas[2] - '0'); 
+          int tamLombriga = (charLombrigas[3]) *10 + (charLombrigas[4] - '0'); 
+          int posCabeca = (charLombrigas[5] - '0') *10 + (charLombrigas[6] - '0'); 
+          
           String movimentos = "";
           
           AquarioLombriga aquario = new AquarioLombriga(tamAquario, tamLombriga, posCabeca);
           
-          for(int c=7;c < lombrigas[0].length();c++) {
-        	  movimentos += lombrigas[0][c];
+          for(int c=7;c < lombrigas[j].length();c++) {
+        	  movimentos += charLombrigas[c];
           }
+          
           Animacao moves = new Animacao(movimentos);
     	  
     	  tk.gravaPasso("=====");
 	      for(int i=0; i < moves.tamanho;i++) {
 	    	  representacao  = moves.apresenta(aquario);
 	    	  tk.gravaPasso(representacao);
-	    	  moves.passo();
+	    	  moves.passo(aquario);
 	      }
       }
       tk.stop();
-      
-      //falta rever a questao da chamada dos metodos das classes
-      //a iteracao sobre os caracteres das strings
-      //o metodo pásso, pra identifcar qual funcao tem q chamar pra executar a acao
-      //---------------------
-      
-      
-      //chamar um metodo da animacao que vai pegar o caractere e dps chamar um metodo da aquario pra executar a acao
-      //primeiro apresenta a lombriga sem fazer nda(primeira cahamda)
-      //executa uma acao e apresenta 
             
       //---------------
       //tk.gravaPasso("=====");
