@@ -11,13 +11,13 @@ public class AppLombriga {
       
       for(int j=0;j < lombrigas.length;j++) {
     	  
+    	  String movimentos = "";
+    
     	  char[] charLombrigas = lombrigas[j].toCharArray();
     	  
     	  int tamAquario = (charLombrigas[0] - '0') *10 + (charLombrigas[1] - '0'); 
           int tamLombriga = (charLombrigas[2] - '0') *10 + (charLombrigas[3] - '0'); 
           int posCabeca = (charLombrigas[4] - '0') *10 + (charLombrigas[5] - '0'); 
-          
-          String movimentos = "";
           
           AquarioLombriga aquario = new AquarioLombriga(tamAquario, tamLombriga, posCabeca);
           
@@ -39,9 +39,6 @@ public class AppLombriga {
       }
       tk.stop();
          
-      
-      //rever o teste 2, o q fazer qndo ela for crescer e estiver na borda??
-      //minha ideia: andar 1 e crescer. So ver se o prof n previu esse caso ja
    }
 
 }

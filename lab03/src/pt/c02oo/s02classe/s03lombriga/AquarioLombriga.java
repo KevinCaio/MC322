@@ -2,6 +2,7 @@ package pt.c02oo.s02classe.s03lombriga;
 
 public class AquarioLombriga {
 	int tamAquario; int tamLombriga; int posCabeca; int posRabo; int direcao;
+	int posCabecaInicial; int posRaboInicial;
 	
 	//direcao -1 eh cabeca pra esquerda
 	
@@ -10,6 +11,8 @@ public class AquarioLombriga {
 		this.tamLombriga = tamLombriga;
 		this.posCabeca = posCabeca;
 		this.posRabo = posCabeca + tamLombriga -1;
+		this.posCabecaInicial = posCabeca;
+		this.posRaboInicial = posCabeca + tamLombriga -1; 
 		direcao = -1;
 	}
 	
@@ -49,32 +52,47 @@ public class AquarioLombriga {
 		direcao = direcao * (-1);
 	}
 	
-	public String apresenta() {
+	public String apresenta(int controle) {
 		String representacao = "";
 		
-		if(direcao == -1) {
-			for(int i = 1;i <= tamAquario;i++) {
-				if(i == posCabeca) { 
-					representacao += "0"; 
-				} 
-				if(i > posCabeca && i <= posRabo) { 
-					representacao += "@"; 
-				} 
-				if(i < posCabeca || i > posRabo) {
-				  representacao += "#"; 
+		if(controle != 0) {
+			if(direcao == -1) {
+				for(int i = 1;i <= tamAquario;i++) {
+					if(i == posCabeca) { 
+						representacao += "0"; 
+					} 
+					if(i > posCabeca && i <= posRabo) { 
+						representacao += "@"; 
+					} 
+					if(i < posCabeca || i > posRabo) {
+					  representacao += "#"; 
+					}
+				}
+			}
+			if(direcao == 1) {
+				for(int i = 1;i <= tamAquario;i++) {
+					if(i == posCabeca) {
+						representacao += "0";
+					}
+					if(i < posCabeca && i >= posRabo) {
+						representacao += "@";
+					}
+					if(i > posCabeca || i < posRabo) {
+						representacao += "#";
+					}
 				}
 			}
 		}
-		if(direcao == 1) {
+		else {
 			for(int i = 1;i <= tamAquario;i++) {
-				if(i == posCabeca) {
-					representacao += "0";
-				}
-				if(i < posCabeca && i >= posRabo) {
-					representacao += "@";
-				}
-				if(i > posCabeca || i < posRabo) {
-					representacao += "#";
+				if(i == posCabecaInicial) { 
+					representacao += "0"; 
+				} 
+				if(i > posCabecaInicial && i <= posRaboInicial) { 
+					representacao += "@"; 
+				} 
+				if(i < posCabecaInicial || i > posRaboInicial) {
+				  representacao += "#"; 
 				}
 			}
 		}
