@@ -53,14 +53,14 @@ public class AquarioLombriga {
 		
 		if(direcao == -1) {
 			for(int i = 0;i <= tamAquario;i++) {
-				if(i == posCabeca) {
-					representacao += "0";
-				}
-				if(i > posCabeca && i <= posRabo) {
-					representacao += "@";
-				}
-				else {
-					representacao += "#";
+				if(i == posCabeca) { 
+					representacao += "0"; 
+				} 
+				if(i > posCabeca && i <= posRabo) { 
+					representacao += "@"; 
+				} 
+				if(i < posCabeca || i > posRabo) {
+				  representacao += "#"; 
 				}
 			}
 		}
@@ -72,7 +72,7 @@ public class AquarioLombriga {
 				if(i < posCabeca && i >= posRabo) {
 					representacao += "@";
 				}
-				else {
+				if(i > posCabeca || i < posRabo) {
 					representacao += "#";
 				}
 			}
