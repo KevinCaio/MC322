@@ -2,4 +2,4 @@
 
 ## Arquivos Java sobre Lombriga no Aquário
 
-[Diretorio](pt/c02oo/s02classe/s03lombriga/)
+[Diretorio](src/pt/c02oo/s02classe/s03lombriga/)
