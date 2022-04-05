@@ -9,6 +9,7 @@ public class AquarioLombriga {
 		this.tamAquario = tamAquario;
 		this.tamLombriga = tamLombriga;
 		this.posCabeca = posCabeca;
+		this.posRabo = posCabeca + tamLombriga -1;
 		direcao = -1;
 	}
 	
@@ -52,7 +53,7 @@ public class AquarioLombriga {
 		String representacao = "";
 		
 		if(direcao == -1) {
-			for(int i = 0;i <= tamAquario;i++) {
+			for(int i = 1;i <= tamAquario;i++) {
 				if(i == posCabeca) { 
 					representacao += "0"; 
 				} 
@@ -65,7 +66,7 @@ public class AquarioLombriga {
 			}
 		}
 		if(direcao == 1) {
-			for(int i = 0;i <= tamAquario;i++) {
+			for(int i = 1;i <= tamAquario;i++) {
 				if(i == posCabeca) {
 					representacao += "0";
 				}

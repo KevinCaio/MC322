@@ -7,9 +7,6 @@ public class AppLombriga {
       
       String lombrigas[] = tk.recuperaLombrigas();
       
-      //for (int l = 0; l < lombrigas.length; l++)
-      //   System.out.println(lombrigas[l]);
-  
       String representacao;
       
       for(int j=0;j < lombrigas.length;j++) {
@@ -17,7 +14,7 @@ public class AppLombriga {
     	  char[] charLombrigas = lombrigas[j].toCharArray();
     	  
     	  int tamAquario = (charLombrigas[0] - '0') *10 + (charLombrigas[1] - '0'); 
-          int tamLombriga = (charLombrigas[2]) *10 + (charLombrigas[3] - '0'); 
+          int tamLombriga = (charLombrigas[2] - '0') *10 + (charLombrigas[3] - '0'); 
           int posCabeca = (charLombrigas[4] - '0') *10 + (charLombrigas[5] - '0'); 
           
           String movimentos = "";
@@ -41,17 +38,10 @@ public class AppLombriga {
 	      }
       }
       tk.stop();
-            
-      //---------------
-      //tk.gravaPasso("=====");
-      //tk.gravaPasso("sim");
-      //tk.gravaPasso("#O@@@###");
-      //tk.gravaPasso("#O@@@@##");
-      //tk.gravaPasso("O@@@@###");
-      //tk.gravaPasso("@@@@O###");
-      //tk.gravaPasso("#@@@@O##");
+         
       
-      //tk.stop();
+      //rever o teste 2, o q fazer qndo ela for crescer e estiver na borda??
+      //minha ideia: andar 1 e crescer. So ver se o prof n previu esse caso ja
    }
 
 }
