@@ -11,26 +11,37 @@ public class AppRestaUm {
       
       String commands[] = tk.retrieveCommands();
       
-      for (int l = 0; l < commands.length; l++)
-         System.out.println(commands[l]);
-      
       char board[][] = {
-         {' ', ' ', 'P', 'P', 'P', ' ', ' '},
-         {' ', ' ', 'P', 'P', 'P', ' ', ' '},
-         {'P', 'P', 'P', 'P', 'P', 'P', 'P'},
-         {'P', 'P', 'P', '-', 'P', 'P', 'P'},
-         {'P', 'P', 'P', 'P', 'P', 'P', 'P'},
-         {' ', ' ', 'P', 'P', 'P', ' ', ' '},
-         {' ', ' ', 'P', 'P', 'P', ' ', ' '}
-      };
+    	         {' ', ' ', 'P', 'P', 'P', ' ', ' '},
+    	         {' ', ' ', 'P', 'P', 'P', ' ', ' '},
+    	         {'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+    	         {'P', 'P', 'P', '-', 'P', 'P', 'P'},
+    	         {'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+    	         {' ', ' ', 'P', 'P', 'P', ' ', ' '},
+    	         {' ', ' ', 'P', 'P', 'P', ' ', ' '}
+    	      };
       
       Tabuleiro objTabu = new Tabuleiro(board);
-      objTabu.movimenta();
-            
+      
+      
       tk.writeBoard("Tabuleiro inicial", board);
       
-      tk.stop();
+      for (int l = 0; l < commands.length; l++) {
+          char[] charCommands = commands[l].toCharArray();
+          
+          objTabu.movimenta(charCommands); //talvez chamaer o metodo da peca pra movimentar
+          
+          
+          tk.writeBoard("source: " + charCommands[0] + charCommands[1] + ";" + " target: " + charCommands[3] + charCommands[4],
+          objTabu.apresenta());
+          
+      }
       
+   
+      
+     
+       
+      tk.stop();
    }
    
    //preciso enviar uma matriz de char para a whiteboard
