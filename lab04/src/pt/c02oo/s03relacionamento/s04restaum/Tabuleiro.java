@@ -21,22 +21,34 @@ public class Tabuleiro {
 		int columnDestiny = charCommands[4] - 97;
 		
 		if((lineOrigin == lineDestiny && Math.abs(columnDestiny-columnOrigin) == 2) || 
-		columnOrigin == columnDestiny && Math.abs(lineOrigin-lineDestiny) == 2) {
-			if(tabuleiro[lineOrigin][columnOrigin].valida && tabuleiro[lineOrigin][columnOrigin].viva 
-			&& tabuleiro[lineDestiny][columnDestiny].valida && !tabuleiro[lineDestiny][columnDestiny].viva) {
-				if((lineOrigin == lineDestiny && tabuleiro[lineOrigin][(columnDestiny+columnOrigin)/2].viva) ||
-				   (columnOrigin == columnDestiny && tabuleiro[(lineOrigin+lineDestiny)/2][columnOrigin].viva)) {
-					//movimenta a peca
-					//as condicoes de posicoes e movimentacoes validas o tabuleiro pd fazer, ja se vai ter algum apeca nodestino
-					//ou algo do tipo ai a peca precisa perguntar.
-					
-					//
-				}
-				
-			}
+		columnOrigin == columnDestiny && Math.abs(lineOrigin-lineDestiny) == 2) { //movimento valido no trabuleiro
+			
+			tabuleiro[lineOrigin][columnOrigin].movimenta(lineDestiny, columnDestiny, lineOrigin, columnOrigin);
 		}
 		
 	}
+	public boolean podeIr(int lineDestiny, int columnDestiny, int lineOrigin, int columnOrigin) {
+		if(tabuleiro[lineDestiny][columnDestiny].ehValida() && !tabuleiro[lineDestiny][columnDestiny].taViva()
+				&& (lineOrigin == lineDestiny && tabuleiro[lineOrigin][(columnDestiny+columnOrigin)/2].taViva()) ||
+				   (columnOrigin == columnDestiny && tabuleiro[(lineOrigin+lineDestiny)/2][columnOrigin].taViva())) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void meMovimenta(int lineDestiny, int columnDestiny, int lineOrigin, int columnOrigin) {
+		tabuleiro[lineOrigin][columnOrigin].esvazia();
+		tabuleiro[lineDestiny][columnOrigin].enche();
+		if(lineOrigin == lineDestiny){
+			tabuleiro[lineOrigin][(columnDestiny+columnOrigin)/2].esvazia();
+		}
+		if(columnOrigin == columnDestiny) {
+			tabuleiro[(lineOrigin+lineDestiny)/2][columnOrigin].esvazia();
+		}
+	}
+	
 	public void esvazia(int i, int j) {
 		board[i][j] = '-';
 	}
@@ -49,5 +61,11 @@ public class Tabuleiro {
 		return board;
 	}
 	
+	//mudar varias coisas, a peca n vai conseguir chamar o tabuleiro
+	//passar as infos pra peca
+	//ela julga se vai ou n.
 	
+	//ou
+	
+	//posso colocar os metodos do tabuleiro como private, ai a peca n consegue acesar
 }
