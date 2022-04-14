@@ -7,6 +7,8 @@ public class Tabuleiro {
 	
 	public Tabuleiro(char board[][]) {
 		this.board = board;
+		
+		this.tabuleiro = new Peca[7][7];
 		for(int i = 0;i < 7; i++) {
 			for(int j = 0; j < 7;j++) {
 				this.tabuleiro[i][j] = new Peca(i, j);
@@ -23,10 +25,10 @@ public class Tabuleiro {
 	}
 	
 	public void movimenta(char[] charCommands) {
-		int lineOrigin = charCommands[0] - 48;  //se der problema pd ser aqui
-		int columnOrigin = charCommands[1] - 97;
-		int lineDestiny = charCommands[3] - 48;
-		int columnDestiny = charCommands[4] - 97;
+		int columnOrigin = charCommands[0] - 97;  //se der problema pd ser aqui
+		int lineOrigin = charCommands[1] - 49;
+		int columnDestiny = charCommands[3] - 97;
+		int lineDestiny = charCommands[4] - 49;
 		
 		if(lineOrigin >= 0 && lineOrigin < 7 && columnOrigin >= 0 && columnOrigin < 7
 		&& lineDestiny >= 0 && lineDestiny < 7 && columnDestiny >= 0 && columnDestiny < 7) {
@@ -53,9 +55,11 @@ public class Tabuleiro {
 		
 		if(lineOrigin == lineDestiny){
 			tabuleiro[lineOrigin][(columnDestiny+columnOrigin)/2].esvazia();
+			esvazia(lineOrigin, (columnDestiny+columnOrigin)/2);
 		}
 		if(columnOrigin == columnDestiny) {
 			tabuleiro[(lineOrigin+lineDestiny)/2][columnOrigin].esvazia();
+			esvazia((lineOrigin+lineDestiny)/2, columnOrigin);
 		}
 	}
 	
@@ -71,11 +75,11 @@ public class Tabuleiro {
 	}
 	
 	public void esvazia(int i, int j) { 
-		board[i][j] = '-';
+		this.board[i][j] = '-';
 	}
 	
 	public void enche(int i, int j) {
-		board[i][j] = 'P';
+		this.board[i][j] = 'P';
 	}
 	
 	public char[][] apresenta() {
