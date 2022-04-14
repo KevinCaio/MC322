@@ -2,10 +2,11 @@ package pt.c02oo.s03relacionamento.s04restaum;
 
 public class Peca {
 
-	
-	boolean viva;
-	boolean valida;
-	//colocar a posicao?
+	private int line;
+	private int column;
+	private boolean viva;
+	private boolean valida;
+	Tabuleiro objTabu;
 	
 	public Peca(int i, int j) {
 		if((i < 2 && j < 2) || (i > 4 && j < 2) || (i < 2  && j > 4) || (i > 4 && j > 4)) {
@@ -20,12 +21,27 @@ public class Peca {
 			this.valida = true;
 			this.viva = true;
 		}
+		this.line = i;
+		this.column = j;
 	}
 	
-	public void movimenta(int lineDestiny, int columnDestiny, int lineOrigin, int columnOrigin) {
-		if(valida && objTabu.podeIr(lineDestiny, columnDestiny, lineOrigin, columnOrigin)) {
-			objTabu.meMovimenta(lineDestiny, columnDestiny, lineOrigin, columnOrigin);;
-		}	
+	public void conectaTabu(Tabuleiro objTabu) {
+		this.objTabu = objTabu;
+	}
+	
+	public void movimenta(int lineDestiny, int columnDestiny) {
+		
+		if((line == lineDestiny && Math.abs(columnDestiny-column) == 2) || 
+			column == columnDestiny && Math.abs(line-lineDestiny) == 2) {
+			if(valida && viva && objTabu.podeIr(lineDestiny, columnDestiny, line, column)) {
+				objTabu.meMovimenta(lineDestiny, columnDestiny, line, column);;
+			}	
+		}
+	}
+	
+	public void trocaPos(int line, int column) {
+		this.line = line;
+		this.column = column;
 	}
 	
 	public boolean taViva() {
@@ -40,7 +56,4 @@ public class Peca {
 		viva = false;
 	}
 	
-	public void enche() {
-		viva = true;
-	}
 }

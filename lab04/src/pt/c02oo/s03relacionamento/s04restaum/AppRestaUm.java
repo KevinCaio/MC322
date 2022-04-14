@@ -23,6 +23,7 @@ public class AppRestaUm {
       
       Tabuleiro objTabu = new Tabuleiro(board);
       
+      objTabu.conectaSe(objTabu);
       
       tk.writeBoard("Tabuleiro inicial", board);
       
@@ -35,24 +36,7 @@ public class AppRestaUm {
           tk.writeBoard("source: " + charCommands[0] + charCommands[1] + ";" + " target: " + charCommands[3] + charCommands[4],
           objTabu.apresenta());
           
-      }
-      
-   
-      
-     
-       
+      }  
       tk.stop();
    }
-   
-   //colocar se eh publica, privada as classes e metodos
-   
-   //
-   //o tabuleiro recebe a ordem de mudar a peca, ai ele chama a peca e la dentro vai ter um metodo para o tabuleiro mudar a peca.
-   
- 
-   
-   //peca tem q julgar se pode se mover ou n, isso pode ser feito com base em parametros passdos pelo tabuleiro ou a peca 
-   //pergunta pro tabuleiro
-  
-
 }
